@@ -54,14 +54,15 @@ public class proceso
 
 	public static void main(String[] args)//Main temporal para probar las funciones de creacion y obtencion de procesos
 	{
-		Random  rnd = new Random();
-		ArrayList<proceso> lista = new ArrayList<proceso>();
+		Random  rnd = new Random();//Para crear numeros aleatorios para simular solicitud de memoria
+		ArrayList<proceso> lista = new ArrayList<proceso>();//ArrayList donde se guardan los procesos
+		//***Importante*** se puede utilizar este mismo procedimiento para crear la lista de procesos
 
-		for(int i=0;i<10;i++)
+		for(int i=0;i<10;i++)//Crear 10 procesos random con nombres "proceso+numeroEntero"
 		{
 			lista.add(new proceso(i,"proceso"+String.valueOf(i),rnd.nextInt(1024)+1));
 		}
-		for(int i=0;i<10;i++)
+		for(int i=0;i<10;i++)//Recorre la lista de procesos e imprime sus atributos con la funcion getDatos()
 		{
 			System.out.println(lista.get(i).getDatos());
 		}
