@@ -1,3 +1,5 @@
+package progra2;
+
 import java.awt.*;
 import javax.swing.*;
 import java.util.*;
@@ -69,22 +71,22 @@ public class desfragmentacion extends javax.swing.JFrame{
         jTable1.setBackground(new java.awt.Color(241, 252, 243));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", new Integer(12), new Integer(4), null},
-                {"", new Integer(30), new Integer(6), null},
-                {null, new Integer(15), new Integer(3), null},
-                {null, new Integer(46), new Integer(6), null},
-                {null, new Integer(80), new Integer(9), null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"", null, null},
+                {"", null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
                 "Proceso", "Tamaño(Kb)",  "#Páginas "
@@ -106,14 +108,17 @@ public class desfragmentacion extends javax.swing.JFrame{
             }
         });
         jScrollPane2.setViewportView(jTable1);
-        jTable1.getColumnModel().getColumn(0).setMinWidth(20);
-        jTable1.getColumnModel().getColumn(0).setPreferredWidth(50);
-        jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+        jTable1.getColumnModel().getColumn(0).setMinWidth(40);
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(88);
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(88);
+        jTable1.getColumnModel().getColumn(1).setMinWidth(40);
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(100);
+        jTable1.getColumnModel().getColumn(1).setMaxWidth(100);
         jTable1.getColumnModel().getColumn(2).setMinWidth(40);
-        jTable1.getColumnModel().getColumn(2).setPreferredWidth(60);
-        jTable1.getColumnModel().getColumn(2).setMaxWidth(60);
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(100);
+        jTable1.getColumnModel().getColumn(2).setMaxWidth(100);
 
-        jTextField2.setText("8");
+        jTextField2.setText(" ");
 
        // jTextField1.setText("4");
 
@@ -127,7 +132,7 @@ public class desfragmentacion extends javax.swing.JFrame{
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("Tamaño De Página");
 
-        jTextField3.setText("128");
+        jTextField3.setText(" ");
 
         jLabel3.setBackground(new java.awt.Color(102, 102, 102));
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11));
@@ -210,81 +215,100 @@ public class desfragmentacion extends javax.swing.JFrame{
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder()), "Solución", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Book Antiqua", 1, 15), new java.awt.Color(51, 51, 51))); // NOI18N
 
         jTable2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
-            new String [] {
-                "N° Página", "N° Marco", "Proceso"
-            }
+            new String [] {"N° Págs", "N° Marco", "Proc", "Dirty bit"}
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
+        jTable2.getColumnModel().getColumn(0).setMinWidth(58);
+        jTable2.getColumnModel().getColumn(0).setMaxWidth(110);
+        jTable2.getColumnModel().getColumn(0).setPreferredWidth(110);
+        jTable2.getColumnModel().getColumn(1).setMinWidth(60);
+        jTable2.getColumnModel().getColumn(1).setMaxWidth(110);
+        jTable2.getColumnModel().getColumn(1).setPreferredWidth(110);
+        jTable2.getColumnModel().getColumn(2).setMinWidth(43);
+        jTable2.getColumnModel().getColumn(2).setMaxWidth(110);
+        jTable2.getColumnModel().getColumn(2).setPreferredWidth(110);
+        jTable2.getColumnModel().getColumn(3).setMinWidth(70);
+        jTable2.getColumnModel().getColumn(3).setMaxWidth(110);
+        jTable2.getColumnModel().getColumn(3).setPreferredWidth(110);
+
         jScrollPane1.setViewportView(jTable2);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 250));
