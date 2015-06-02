@@ -1,4 +1,4 @@
-package progra2;
+//package progra2;
 
 import java.util.Random;
 import java.util.ArrayList;
@@ -19,9 +19,9 @@ public class proceso
 		this.id=i;
 		this.nombre=n;
 		this.memoria=m;
-                this.unidad=u;
-                this.prioridad=p;
-                
+		this.unidad=u;
+		this.prioridad=p;
+
 	}
 
 	public String getId()//Obtiene el id del proceso
@@ -43,7 +43,7 @@ public class proceso
 	{
 		return this.prioridad;
 	}
-                
+
 	public void setId(String i)//Cambia o establece el id del proceso
 	{
 		this.id=i;
@@ -68,7 +68,7 @@ public class proceso
 		return "Id proceso: "+String.valueOf(this.id)+" Nombre: "+this.nombre+" Memoria requerida: "+String.valueOf(this.memoria) + " Prioridad: "+String.valueOf(this.prioridad);
 	}
 
-	public static void main(String[] args)//Main temporal para probar las funciones de creacion y obtencion de procesos
+	/*public static void main(String[] args)//Main temporal para probar las funciones de creacion y obtencion de procesos
 	{
 		//Random  rnd = new Random();//Para crear numeros aleatorios para simular solicitud de memoria
 		ArrayList<proceso> lista = new ArrayList<proceso>();//ArrayList donde se guardan los procesos
@@ -83,5 +83,5 @@ public class proceso
 //		{
 //			System.out.println(lista.get(i).getDatos());
 //		}
-	}
+	}*/
 }
