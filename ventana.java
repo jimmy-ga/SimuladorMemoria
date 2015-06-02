@@ -1,3 +1,5 @@
+package progra2;
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +27,16 @@ public class ventana extends javax.swing.JFrame {
         cleaning_policy.add(precleaning);
         opcion_fp.add(FIFO2);
         opcion_fp.add(prioridad);
+        jPanel1.setToolTipText("<html>"
+                              + "Fetch Policy."
+                              +"<br>"
+                              +"Demand: trae las páginas solamente cuando una referencia es hecha a una dirección en la página."
+                              +"<br>"
+                              + "Prepaging: trae más páginas que las necesarias."
+                         + "</html>");
+        /*jPanel1.setToolTipText("Fetch Policy: \n" 
+                + "Demand: trae las páginas solamente cuando una referencia es hecha a una dirección en la página  \n "
+                + "Prepaging: trae más páginas que las necesarias ");*/
     }
 
     @SuppressWarnings("unchecked")
@@ -522,8 +534,6 @@ public class ventana extends javax.swing.JFrame {
         String max = texto_max.getText();
         String crecim = texto_crecim.getText();
 
-
-
         desfragmentacion ventana2 = new desfragmentacion();
         
         if (demand.isSelected()) {
@@ -638,9 +648,9 @@ public class ventana extends javax.swing.JFrame {
         System.out.println(valores);
         ventana2.show();
         ventana2.setLocationRelativeTo(this);
-
     }                                     
 
+    
     private void texto_minActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
     }                                         
