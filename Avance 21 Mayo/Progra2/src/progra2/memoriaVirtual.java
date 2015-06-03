@@ -25,7 +25,6 @@ import java.util.Queue;
  * 5. Ingresa los procesos a memoria, ya en forma de paginas.
  *******************************************************************************/
 
-
 //Clase memoria virtual
 public class memoriaVirtual {
 
@@ -35,7 +34,8 @@ public class memoriaVirtual {
     int paginasMemoria = tamanoMemoria/paginas; //Cantidad de paginas para la memoria
     ArrayList<proceso> listaProcesos = new ArrayList<proceso>();//ArrayList donde se guardan los procesos
     int ProcesosEjecutar = 4;
-    String tipocola = "FIFO";
+    proceso[] procs=new proceso[1000];
+    String tipocola="FIFO";
 	//proceso[] fifof=new proceso[1000];
 
     //Colas requeridas para guardar los procesos
@@ -61,79 +61,38 @@ public class memoriaVirtual {
                 return (int) (c1.getPrio()- c2.getPrio());
             }
         };
-
         //Funcion para obtener los datos de archivo .txt
-        public void leerArchivo() throws FileNotFoundException, IOException{
-			//LinkedList<proceso> f = new LinkedList<proceso>();
-            //Verifica si el archivo existe
-            if (! (new File("Procesos.txt")).exists() )
-            {
-                System.out.println("No he encontrado fichero.txt");
-                return;
-            }
-            else{
-                System.out.println("El archivo si existe");
-            }
 
-            try
-            {
-                BufferedReader br = new BufferedReader(new FileReader("Procesos.txt"));
-                String proces = null;
-
-                //Verificar si existen datos en el archivo
-                proces = br.readLine();
-                int pos=0;
-                while(proces!= null){
-                    //Como el delimitador es una coma, se indica
-                    StringTokenizer token = new StringTokenizer(proces, ",");
-                    //Recuperacion de datos
-                    id = token.nextToken().trim(); //Id del proceso
-                    nombre = token.nextToken().trim(); //Nombre del proceso
-                    memoria = token.nextToken().trim(); //Memoria requerida
-                    unidad = token.nextToken().trim(); //Unidad de medida
-                    prioridad = token.nextToken().trim(); //Prioridad del proceso
-
-
-                    //Cambia el parametro memoria y sPrioridd a int
-                    memoriaInt = Integer.parseInt(memoria);
-                    prioridadInt = Integer.parseInt(prioridad);
-
-                    //Verifica la unidad del proceso
-
-                    //Ingresa los datos a la cola FIFO
-                  proceso proc=new proceso(id, nombre, memoriaInt, unidad, prioridadInt);
-                  //ingresoProcesos(proceso);
-                  addprocs(proc);
-                  //fifof[pos]=proc;
-                  //if (pos>=1)
-                  //System.out.println(fifof[pos].getDatos());
-                  //pos++;
-					proces = br.readLine();
-                }//Fin del while
-                System.out.println("carga compleat");
-                br.close();
-            }
-            catch (IOException errorDeFichero)
-            {
-                System.out.println("Ha habido problemas: " + errorDeFichero.getMessage() );
-            }
-        }
+			void cargamemoria()
+			{
+				String archivo="Procesos.txt";
+				try
+				{
+					String linea="";
+					FileReader fr = new FileReader(archivo);
+					BufferedReader br = new BufferedReader(fr);
+					int i=0;
+					while((linea=br.readLine())!=null)
+					{
+						String temporal[] = linea.split(",");
+						proceso ptemp=new proceso(temporal[0].trim(),temporal[1].trim(),Integer.parseInt(temporal[2].trim()),temporal[3].trim(),Integer.parseInt(temporal[4].trim()));
+						procs[i]=ptemp;
+						//System.out.println(ptemp.getDatos());
+						i++;
+					}
+				}catch(Exception e)
+				{
+					e.printStackTrace();
+				}
+			}
 
         //Funcion para agregar los procesos a memoria virtual
-        LinkedList<proceso> fifo2 = new LinkedList<proceso>();
-        public void addprocs(proceso p)
-        {
-			fifo2.addFirst(p);
-		}
-
         public void ingresoProcesos(){
             //System.out.println(FIFOQueue.extraer().getDatos());
             for (int i=0;i<ProcesosEjecutar;i++){
             //Verificacion de la cola que desea utilizar
                 if (tipocola.equals("FIFO")){
-                    //while (FIFOQueue.size()>0){
-                    //proceso procesoMemoria = FIFOQueue.extraer();
-                    System.out.println(fifo2.getLast().getDatos());
+	                    System.out.println(procs[i].getDatos());
                     }
                 }
 
@@ -166,7 +125,7 @@ public class memoriaVirtual {
 	public static void main(String[] args) throws IOException{
 
             memoriaVirtual pruebaMemoria =  new memoriaVirtual();
-            pruebaMemoria.leerArchivo();
+            pruebaMemoria.cargamemoria();
             pruebaMemoria.ingresoProcesos();
             //pruebaMemoria.imprimir();
 

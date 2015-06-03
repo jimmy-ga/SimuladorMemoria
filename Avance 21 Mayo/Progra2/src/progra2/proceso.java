@@ -14,6 +14,14 @@ public class proceso
         public static String unidad;
         public static int prioridad;
 
+	public proceso()
+	{
+		this.id=null;
+		this.nombre=null;
+		this.memoria=0;
+		this.unidad=null;
+		this.prioridad=0;
+	}
 	public proceso(String i,String n,int m, String u, int p)//Constructor con parametros de entrada id,nombre,memoria requerida
 	{
 		this.id=i;
