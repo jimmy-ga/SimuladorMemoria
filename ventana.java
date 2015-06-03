@@ -34,10 +34,53 @@ public class ventana extends javax.swing.JFrame {
                               +"<br>"
                               + "Prepaging: trae más páginas que las necesarias."
                          + "</html>");
-        /*jPanel1.setToolTipText("Fetch Policy: \n" 
-                + "Demand: trae las páginas solamente cuando una referencia es hecha a una dirección en la página  \n "
-                + "Prepaging: trae más páginas que las necesarias ");*/
+        jPanel3.setToolTipText("<html>"
+                              + "Replacement Policy." +"<br>"
+                              + "LRU:la página menos recientemente usada será reemplazada." +"<br>"
+                              + "FIFO: la página que primero entró será reemplazada." +"<br>"
+                              + "MRU: la página más recientemente usada será reemplazada" + "<br>"
+                              + "Clock: hace reemplazos de página cada cierto tiempo." 
+                         + "</html>");
+        jPanel5.setToolTipText("<html>"
+                              + "Replacement Scope."
+                              +"<br>"
+                              +"Global: hace el reemplazo en cualquier frame disponible."
+                              +"<br>"
+                              + "Local: hace el reemplazo únicamente en los frames de ese proceso."
+                         + "</html>");
+        jPanel7.setToolTipText("<html>"
+                              + "Grado de Multiprogramación."
+                              +"<br>"
+                              +"Cantidad de procesos que se van a considerar. "
+                         + "</html>");
+        jPanel2.setToolTipText("<html>"
+                              + "Placement Policy."
+                              +"<br>"
+                              + "First Available: busca el primer espacio disponible en la memoria física."
+                              +"<br>"
+                              + "Next Available: busca el siguiente espacio disponible en la memoria física."
+                         + "</html>");
+        jPanel4.setToolTipText("<html>"
+                              + "Resident Set Management. "
+                              +"<br>"
+                              + "Fixed: es el número de frames fijos asignados a un proceso."
+                              +"<br>"
+                              + "Variable: es el número de frames asignados a un proceso que evoluciona con las necesidades de memoria del proceso."
+                         + "</html>");
+        jPanel6.setToolTipText("<html>"
+                              + "Cleaning Policy. "
+                              +"<br>"
+                              + "Demand: una página se escribe a memoria física solo cuando se ha seleccionado para un reemplazo."
+                              +"<br>"
+                              + "Pre-cleaning: se escribe las páginas modificadas antes de que sus frames de páginas se necesiten."
+                         + "</html>");
+        jLabel3.setToolTipText("Cantidad de memoria física que estará disponible para los procesos.");
+        jLabel5.setToolTipText("Cantidad de memoria virtual que estará disponible para los procesos.");
+        jLabel6.setToolTipText("Tamaño que tendrán las páginas de cada proceso.");
+        jLabel7.setToolTipText("Tamaño que tendrán las direcciones de cada proceso.");
+        crear.setToolTipText("Botón para cargar los procesos junto a la información seleccionada.");
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
@@ -196,7 +239,7 @@ public class ventana extends javax.swing.JFrame {
                 .addComponent(clock))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Resident Set Managent"));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Resident Set Management"));
 
         jLabel1.setText("Size");
 
@@ -513,6 +556,8 @@ public class ventana extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
+        jPanel4.getAccessibleContext().setAccessibleName("Resident Set Management");
+
         pack();
     }// </editor-fold>                        
 
@@ -522,6 +567,9 @@ public class ventana extends javax.swing.JFrame {
 
     private void crearActionPerformed(java.awt.event.ActionEvent evt) {                                      
         ArrayList<String> valores = new ArrayList<String>();
+        ArrayList<String> mem_virtual = new ArrayList<String>();
+        ArrayList<String> mem_fisica = new ArrayList<String>();
+        
         String direc = t_direc.getText();
         String pags = t_pags.getText();
         String fijo = text_fijo.getText();
@@ -618,6 +666,15 @@ public class ventana extends javax.swing.JFrame {
         valores.add(direc);
         valores.add(off);
         valores.add(grado);
+        mem_virtual.add(virtual);
+        mem_virtual.add(pags);
+        mem_virtual.add(grado);
+        mem_fisica.add(fisica);
+        mem_fisica.add(pags);
+        
+        // orden mem_virtual [tamano mem, tamano pags, grado multi]
+        // orden mem_fisica [tamano mem, pags]
+        
         if (FIFO2.isSelected()) {
             valores.add("fifo"); 
         }    
