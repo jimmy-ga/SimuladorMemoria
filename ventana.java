@@ -5,10 +5,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.*;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import progra2.desfragmentacion;
         
 public class ventana extends javax.swing.JFrame {
 
+    public static ArrayList<String> mem_virtual = new ArrayList<String>();
+    public static ArrayList<String> mem_fisica = new ArrayList<String>();
+    public static ArrayList<String> valores = new ArrayList<String>();
+    
     public ventana() {
         initComponents();
         fetch_policy.add(demand);
@@ -566,10 +572,7 @@ public class ventana extends javax.swing.JFrame {
     }                                   
 
     private void crearActionPerformed(java.awt.event.ActionEvent evt) {                                      
-        ArrayList<String> valores = new ArrayList<String>();
-        ArrayList<String> mem_virtual = new ArrayList<String>();
-        ArrayList<String> mem_fisica = new ArrayList<String>();
-        
+                
         String direc = t_direc.getText();
         String pags = t_pags.getText();
         String fijo = text_fijo.getText();
@@ -582,13 +585,13 @@ public class ventana extends javax.swing.JFrame {
         String max = texto_max.getText();
         String crecim = texto_crecim.getText();
 
-        desfragmentacion ventana2 = new desfragmentacion();
+        
         
         if (demand.isSelected()) {
-            valores.add("demand"); // Añade el valor al ArrayList
+            //valores.add("demand"); // Añade el valor al ArrayList
         }
         if (prepaging.isSelected()) {
-            valores.add("prepaging"); 
+            //valores.add("prepaging"); 
         }
         /*if (demand.isSelected() == false && prepaging.isSelected() == false) {
             JOptionPane.showMessageDialog(null,"Debe seleccionar un método de fetch policy.");
@@ -609,32 +612,32 @@ public class ventana extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Debe seleccionar un método de replacement policy.");
         }*/
         if (global.isSelected()) {
-            valores.add("global"); 
+            //valores.add("global"); 
         }      
         if (local.isSelected()) {
-            valores.add("local"); 
+           // valores.add("local"); 
         }      
         /*if (global.isSelected() == false && local.isSelected() == false) {
             JOptionPane.showMessageDialog(null,"Debe seleccionar un método de replacement scope.");
         }*/
         if (First.isSelected()) {
-            valores.add("first"); 
+           // valores.add("first"); 
         }      
         if (Next.isSelected()) {
-            valores.add("next"); 
+           // valores.add("next"); 
         }  
         /*if (First.isSelected() == false && Next.isSelected() == false) {
             JOptionPane.showMessageDialog(null,"Debe seleccionar un método de placement policy.");
         }*/
         if (fixed.isSelected()) {
-            valores.add("fixed"); 
-            valores.add(fijo); 
+           // valores.add("fixed"); 
+            //valores.add(fijo); 
         }      
         if (variable.isSelected()) {
-            valores.add("variable"); 
-            valores.add(min);
-            valores.add(max);
-            valores.add(crecim);
+           // valores.add("variable"); 
+            //valores.add(min);
+            //valores.add(max);
+            //valores.add(crecim);
         }      
         /*if (fixed.isSelected() == false && variable.isSelected() == false) {
             JOptionPane.showMessageDialog(null,"Debe seleccionar un método de resident set management.");
@@ -643,11 +646,11 @@ public class ventana extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Debe ingresar un largo de fixed.");
         }*/
         if (demand_cleaning.isSelected()) {
-            valores.add("demand clean"); 
+           // valores.add("demand clean"); 
         }      
         if (precleaning.isSelected()) {
-            valores.add("precleaning"); 
-            valores.add(preclean);
+           // valores.add("precleaning"); 
+           // valores.add(preclean);
         }      
          /*if (demand_cleaning.isSelected() == false && precleaning.isSelected() == false) {
             JOptionPane.showMessageDialog(null,"Debe seleccionar un método de cleaning policy.");
@@ -661,14 +664,18 @@ public class ventana extends javax.swing.JFrame {
         if (local.isSelected() == true && variable.isSelected() == true) {
             JOptionPane.showMessageDialog(null,"Esta combinacion no es posible (local y variable)");
         }*/
-        valores.add(fisica);
-        valores.add(pags);
-        valores.add(direc);
-        valores.add(off);
-        valores.add(grado);
+       // valores.add(fisica);
+       // valores.add(pags);
+       // valores.add(direc);
+       // valores.add(off);
+       // valores.add(grado);
+        
         mem_virtual.add(virtual);
         mem_virtual.add(pags);
         mem_virtual.add(grado);
+        mem_virtual.add(fisica);
+        mem_virtual.add(fijo);
+        
         mem_fisica.add(fisica);
         mem_fisica.add(pags);
         
@@ -676,10 +683,10 @@ public class ventana extends javax.swing.JFrame {
         // orden mem_fisica [tamano mem, pags]
         
         if (FIFO2.isSelected()) {
-            valores.add("fifo"); 
+            //valores.add("fifo"); 
         }    
         if (prioridad.isSelected()) {
-            valores.add("prioridad"); 
+            //valores.add("prioridad"); 
         }    
         /*if(fisica.getText().length()==0){
             JOptionPane.showMessageDialog(null,"Debe ingresar una cantidad de memoria fisica.");
@@ -703,8 +710,28 @@ public class ventana extends javax.swing.JFrame {
         grado multiprogramacion]
         */
         System.out.println(valores);
+       // System.out.println("mem virtual:" + mem_virtual[0]);
+        //System.out.println("mem fisica:" + mem_fisica[0]);
+        
+        Memorias pruebaMemoria =  new Memorias(Integer.parseInt(virtual), Integer.parseInt(pags), Integer.parseInt (grado), Integer.parseInt(fisica), Integer.parseInt(fijo));
+         //Memorias pruebaMemoria =  new Memorias(4, 35, 3, 200, 5);
+        //pruebaMemoria.imprimeTablaVirtual();
+        try{
+        pruebaMemoria.leerArchivo();
+        }catch(Exception e)
+        {
+            System.out.println(e.toString());
+        }
+        //ventana2.RecibirLista(Memorias.memoriaVirtual);
+        //desfragmentacion. ReMemorias.memoriaVirtual
+        //pruebaMemoria.imprimeTablaVirtual();
+        desfragmentacion ventana2 = new desfragmentacion(); 
+        ventana2.RecibirLista(pruebaMemoria.devuelveMV());
         ventana2.show();
         ventana2.setLocationRelativeTo(this);
+        
+        
+//        pruebaMemoria.recibeLista(mem_virtual);
     }                                     
 
     
@@ -746,6 +773,7 @@ public class ventana extends javax.swing.JFrame {
                 new ventana().setVisible(true);
             }
         });
+
     }
 
     // Variables declaration - do not modify                     
